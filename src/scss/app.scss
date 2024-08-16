@@ -1,0 +1,554 @@
+body {
+  // background: $bodycolor;
+  font-family: $bodyfont;
+  margin: 0;
+  // overflow-x: hidden;
+  color: black;
+  font-weight: 300;
+  // height: 100vh;
+  // scroll-behavior: smooth;
+}
+
+// background: $bodycolor;
+// font-family: $bodyfont;
+// margin: 0;
+// overflow-x: hidden;
+// color: $bodytext;
+// font-weight: 300;
+// height: 100vh;
+// scroll-behavior: smooth;
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media print {
+  // container {
+  //   height: 100%;
+  //   margin: 0 !important;
+  //   padding: 0 !important;
+  //   overflow: hidden;
+  // }
+
+  table.v-table tbody td {
+    height: 25px !important;
+  }
+  table.v-table thead tr {
+    font-weight: 400;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  .on-print {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible;
+    background: 0 0 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .no-print {
+    display: none;
+  }
+  
+  .detailBox {
+    overflow: visible;
+    height: 100% !important;
+  }
+  * {
+    background: 0 0 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+
+html {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.v-btn__content {
+  text-transform: capitalize !important;
+}
+
+.numberKey {
+  padding: 5px;
+}
+
+.v-text-field.v-input--is-focused > .v-input__control > .v-input__slot {
+  background: #ffffbc;
+}
+
+.v-menu__content > .v-select-list > .v-list > div > a {
+  max-width: none !important;
+}
+
+.numberKey > .v-btn {
+  border: 1px solid #e7e7e7;
+  background: white;
+  border-radius: 0 !important;
+  touch-action: none;
+  margin: 0px;
+  min-width: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-overflow: clip;
+}
+
+
+
+.pointer {
+  cursor: pointer;
+}
+
+.last-btn {
+  border-radius: 0 10px 10px 0 !important;
+}
+
+.first-btn {
+  border-radius: 10px 0 0 10px !important;
+}
+
+.list-350 {
+  height: 350px;
+  overflow: auto;
+}
+
+.list-500 {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.custom-toggle {
+  border: solid 1px #d9dade;
+}
+
+.invoice-detail {
+  width: 300px !important;
+  background-color: #f5f9fc;
+}
+
+.order-menu-title {
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+}
+
+
+.tile {
+  border-radius: 0 !important;
+}
+
+.al-r input {
+  text-align: right;
+}
+
+.al-c input {
+  text-align: center;
+}
+
+.v-border-line {
+  border-left: 1px solid white;
+  height: 40px;
+}
+
+.touch-view-container {
+  height: calc(100vh - 98px);
+  // height: calc(100vh - 98px);
+  width: 100%;
+}
+
+.group-list {
+  overflow: auto;
+  height: calc(100vh - 215px);
+}
+
+.desktop-view-container {
+  height: calc(100vh - 98px);
+  width: 100%;
+}
+
+.desktop-view-container-purchase {
+  height: calc(100vh - 120px);
+  width: 100%;
+}
+
+.payBtn {
+  height: 60px;
+  width: 300px;
+}
+
+
+.desktop-view-full {
+  height: 100vh;
+  width: 100%;
+}
+
+.v-table tbody tr:hover {
+  background-color: #f6f9fc !important;
+}
+
+.table-header table thead tr:first-child {
+  text-transform: uppercase;
+  background-color: #f6f9fc;
+  text-align: left;
+  border-bottom: 1px solid #dfe4eb;
+  border-top: 1px solid #dfe4eb;
+  height: 40px !important;
+}
+
+.text-truncate {
+  line-height: 1.5 !important;
+}
+
+.card-border-color {
+  border: solid gray 0.5px !important;
+  border-radius: 4px !important;
+}
+
+.v-card {
+  border-radius: 4px;
+  // border: 2px solid #b8b9be !important;
+}
+
+.highlight {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  background: #1E8BF1 !important;
+  color: white;
+}
+
+.outlined {
+  border: solid $border 1px !important;
+}
+
+.v-list__tile--active {
+  color: black !important;
+  margin-right: 20px !important;
+  border-radius: 0px 20px 20px 0px !important;
+  background: white !important;
+}
+
+.v-list__group__header--active {
+  color: black !important;
+  background: white !important;
+}
+
+.v-list__group__header--active .theme--dark {
+  color: black !important;
+  background: white !important;
+}
+
+
+
+.cardTitle {
+  border: solid $border 1px !important;
+  border-bottom: none !important;
+  border-top: none !important;
+}
+
+.cardAction {
+  border: solid $border 1px !important;
+  background-color: $white;
+  border-bottom: none !important;
+}
+
+
+
+.white-btn {
+  border: solid #b8b9be 1px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  background-color: white !important;
+}
+
+.white-btn-round {
+  border: solid $buttonBorder 1px;
+  background-color: white !important;
+}
+
+.big-btn-with-icon {
+  width: 200px;
+  height: 200px;
+  text-transform: none;
+}
+
+.fill-screen {
+  height: calc(100vh - 58px);
+}
+
+.fill-width {
+  width: 100% !important;
+}
+
+.name-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.theme--light.v-text-field--solo > .v-input__control > .v-input__slot {
+  border-radius: 4px;
+  min-height: 40px !important;
+  padding: 0 12px !important;
+  box-shadow: none !important;
+  // background: white !important;
+  border: $inputBorder 1px solid !important;
+}
+
+
+.rounded .v-input__slot {
+  border-radius: 50px !important;
+}
+
+.v-btn-with-radius {
+  border-radius: 4px !important;
+  text-transform: capitalize !important;
+}
+
+.cart-item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-discount {
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-subtext {
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-texAmount {
+  font-size: 10px;
+}
+
+.white-space-normal {
+  white-space: normal !important;
+}
+
+.item-discountAmount {
+  font-size: 10px;
+}
+
+// tab items make 100%
+.v-window__container {
+  height: 100%;
+}
+
+.item-price-withDiscount {
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.mw-1000 {
+  max-width: 1000px !important;
+}
+
+.mw-600 {
+  max-width: 600px !important;
+}
+
+.isModal {
+  margin: -25px;
+}
+
+// .theme--light.application {
+//   background: $bodycolor;
+//   color: $bodytext;
+// }
+
+// .application {
+//   font-family: $bodyfont;
+//   line-height: 1.5;
+// }
+
+html {
+  position: relative;
+  min-height: 100%;
+  // background: $white;
+}
+
+.menu-button {
+  min-width: 130px;
+}
+
+
+
+.full-width {
+  width: 100%;
+}
+
+/* Allow v-select items to grow vertically and limit the horizontal grow*/
+.v-menu__content > .v-select-list > .v-list > div > a {
+  min-height: 48px !important;
+  height: auto !important;
+  max-width: 600px;
+}
+
+/* Limits the size of a td within a datatable */
+.small-td {
+  max-width: 150px;
+  overflow: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Limits the size of a td within a datatable */
+.medium-td {
+  max-width: 250px !important;
+  overflow: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Limits the size of a td within a datatable */
+.large-td {
+  max-width: 500px !important;
+  overflow: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*******************
+Toasted
+*******************/
+.toasted-container.top-right {
+  top: 0%;
+  right: 1%;
+}
+
+/*******************
+Table
+*******************/
+
+.v-datatable th,
+.v-datatable thead th {
+  font-weight: 500;
+}
+
+/*******************
+Headings
+*******************/
+
+.h1-header {
+  color: $headingtext;
+  font-family: $headingfont;
+  font-weight: 400;
+  line-height: 40px;
+  font-size: 36px;
+}
+
+.text-limit-100 {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-limit-140 {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-limit-100 {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.text-limitd {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.h2-header {
+  color: $headingtext;
+  font-family: $headingfont;
+  font-weight: 400;
+  line-height: 36px;
+  font-size: 24px;
+}
+
+.h3-header {
+  color: $headingtext;
+  font-family: $headingfont;
+  font-weight: 400;
+  line-height: 30px;
+  font-size: 21px;
+}
+
+.h4-header {
+  color: $headingtext;
+  font-family: $headingfont;
+  font-weight: 400;
+  line-height: 22px;
+  font-size: 18px;
+}
+
+.h5-header {
+  color: $headingtext;
+  font-family: $headingfont;
+  font-weight: 400;
+  line-height: 18px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+// .theme--light.v-btn-toggle {
+//   border-radius: 10px;
+// }
+
+.toggle-btn-height {
+  height: 48px;
+  width: 48px;
+}
+
+.v-btn--active {
+  background-color: #1d8bf1 !important;
+  color: white !important;
+}
+
+.h6-header {
+  color: $headingtext;
+  font-family: $headingfont;
+  font-weight: 400;
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "commonjs",
+    "paths": {
+      "@Labels/*": ["./tests/e2e/dataLabel/*"],
+    },
+  },
+  "include": [
+    "./node_modules/cypress",
+    "test/e2e/**/*.js"
+  ],
+}

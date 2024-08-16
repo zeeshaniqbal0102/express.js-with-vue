@@ -1,0 +1,87 @@
+image: 
+  name: cellsmartdocker/version:current
+  username: $DOCKER_HUB_USERNAME
+  password: $DOCKER_HUB_PASSWORD
+  email: $DOCKER_HUB_EMAIL
+
+clone:
+  depth: full
+
+definitions:
+  caches:
+    npm: $HOME/.npm
+    cypress: $HOME/.cache/Cypress
+    node: node_modules
+  steps:
+    - step: &commit_initialization
+        name: Commit information
+        script:
+          - echo "Linting and building the project."
+          - LAST_COMMIT_MESSAGE=`git log -1 --pretty=%B`
+          - LAST_COMMIT_ID=`git log -1 --pretty=format:%h`
+          - echo $LAST_COMMIT_MESSAGE
+          - echo $LAST_COMMIT_ID
+    - step: &test_run
+        script:
+          # Clearing screenshot & Exporting Keys
+          - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+          # Setting the path for cypress command & env
+          - chmod -R 755 .
+          - sed -e "s,\${DEV_url},$DEV_url,g" -e "s,\${DEV_email},$E2E_email,g" -e "s,\${DEV_password},$E2E_password,g" -e "s,\${DEV_clientID},$DEV_clientID,g" -e "s,\${DEV_token},$DEV_token,g" tests/e2e/config/mock.js > tests/e2e/support/commands.js
+          - sed -e "s,\${E2E_baseUrl},$E2E_baseUrl,g" -e "s,\${E2E_email},$E2E_email,g" -e "s,\${E2E_password},$E2E_password,g" tests/e2e/config/secure.json > tests/e2e/config/qa.json
+          # Clearing pervious cypress result
+          - aws s3 rm s3://$SCREENSHOT_BUCKET --recursive --exclude="*" --include="backoffice-cypress/*.*" 
+          # Checking lock file and package are same
+          - npm ci
+          # Build then serve local build and start testing
+          - export NODE_ENV=$BRANCH_NODE_ENV
+          - npm run ci
+          - echo "Build pass successfully"
+        after-script:
+          # Upload screenshot in case of test fails
+          - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+          - aws s3 sync ./tests/e2e/screenshots s3://$SCREENSHOT_PATH
+    - step: &deploy_build
+        name: install build and test
+        script:
+          # Checking lock file and package are same
+          - npm config set unsafe-perm true
+          - npm ci
+          # Building webpack staging
+          - export NODE_ENV=$BRANCH_NODE_ENV
+          - npm run $DeployTo
+          # Deploy to S3 and invalidate it (Staging)
+          - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+          - NODE_OPTIONS=--max_old_space_size=8192
+          - aws s3 sync ./dist s3://$BUCKET_NAME
+          - aws cloudfront create-invalidation --distribution-id $INVALIDATION_ID --paths '/*'
+pipelines:
+  default:
+    - step: *commit_initialization
+    - step:
+        name: CI Running    
+        script:
+          - echo "CI is running"
+  branches:
+    develop:
+      - step: *commit_initialization
+      - step: 
+          <<: *test_run
+          name: Build & test
+          deployment: Test
+    staging:
+      - step: *commit_initialization
+      - step:
+          <<: *deploy_build
+          name: Build & Deploy to staging
+          deployment: Staging
+    master:
+      - step: *commit_initialization
+      - step:
+          <<: *deploy_build
+          name: Build & Deploy to Production
+          deployment: Production
+          trigger: manual

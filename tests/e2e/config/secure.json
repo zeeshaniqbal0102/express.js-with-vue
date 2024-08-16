@@ -1,0 +1,7 @@
+{
+    "baseUrl": "${E2E_baseUrl}",
+    "env": {
+        "email": "${E2E_email}",
+        "password": "${E2E_password}"
+    }
+}
